@@ -1,0 +1,120 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Oct 30, 2010 at 03:15 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `network`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `messageid` int(4) NOT NULL auto_increment,
+  `from` int(8) NOT NULL,
+  `to` int(8) NOT NULL,
+  `subject` varchar(20) NOT NULL,
+  `body` varchar(100) NOT NULL,
+  `timestamp` varchar(60) NOT NULL,
+  PRIMARY KEY  (`messageid`),
+  KEY `from` (`from`),
+  KEY `to` (`to`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`messageid`, `from`, `to`, `subject`, `body`, `timestamp`) VALUES
+(1, 1000001, 1000002, 'hi', 'whats up', 'Saturday 30th of October 2010 02:03:52 PM'),
+(3, 1000000, 1000003, 'raid', 'lets go for antarium', 'Saturday 30th of October 2010 02:38:40 PM'),
+(4, 1000003, 1000000, 'RE:raid', 'ok', 'Saturday 30th of October 2010 03:11:13 PM'),
+(5, 1000000, 1000001, 'fifa', 'There is an option to download game face from ea website', 'Saturday 30th of October 2010 03:13:19 PM'),
+(6, 1000001, 1000000, 'RE:fifa', 'Oh cool let me check it out', 'Saturday 30th of October 2010 03:14:11 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_details` (
+  `id` int(8) NOT NULL auto_increment,
+  `user` varchar(20) NOT NULL,
+  `first` varchar(20) NOT NULL,
+  `last` varchar(20) NOT NULL,
+  `pass` varchar(32) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `dob` varchar(10) NOT NULL,
+  `address` varchar(30) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `info` varchar(150) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `name` (`user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1000006 ;
+
+--
+-- Dumping data for table `user_details`
+--
+
+INSERT INTO `user_details` (`id`, `user`, `first`, `last`, `pass`, `email`, `dob`, `address`, `phone`, `info`, `city`, `state`, `country`) VALUES
+(1000000, 'vishnu', 'vishnu', 'karthik', 'f970e2767d0cfe75876ea857f92e319b', 'vishnu_him@yahoo.co.in', '1991-01-23', '41,gopal nagar,peelamedu', '9894800857', 'Pro-Gamer', 'coimbatore', 'tamil nadu', 'india'),
+(1000001, 'karthik', 'karthik', 'dj', 'f970e2767d0cfe75876ea857f92e319b', 'karthik@gmail.com', '1991-01-21', '19,nehru nagar', '9894801331', 'Loves playing football', 'chennai', 'tamil nadu', 'india'),
+(1000002, 'ram', 'ram', 'rajesh', 'f970e2767d0cfe75876ea857f92e319b', 'ramrajesh@yahoo.com', '1990-12-14', 'hopes', '798989991', 'Student at Amrita School of Engineering', 'neyveli', 'tamil nadu', 'india'),
+(1000003, 'Jkayser', 'kyrion', 'leilan', 'f970e2767d0cfe75876ea857f92e319b', 'jkayser@aol.com', '1991-01-23', 'park avenue', '0112241241', 'Role playing game addict', 'madison square', 'berlin', 'germany'),
+(1000005, 'ashokgowtham', 'ashok', 'gowtham', '7a41f726b70367f7aff8f08cd85119b0', 'ashokgowtham123@gmail.com', '1990-01-12', '54,raja street', '999404095', 'loves programming', 'coimbatore', 'tamil nadu', 'india');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wall`
+--
+
+CREATE TABLE IF NOT EXISTS `wall` (
+  `wallid` int(4) NOT NULL auto_increment,
+  `poster` int(8) NOT NULL,
+  `update` varchar(30) NOT NULL,
+  `timestamp` varchar(60) NOT NULL,
+  PRIMARY KEY  (`wallid`),
+  KEY `poster` (`poster`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `wall`
+--
+
+INSERT INTO `wall` (`wallid`, `poster`, `update`, `timestamp`) VALUES
+(7, 1000002, 'This is my first message', 'Sunday 24th of October 2010 10:35:48 PM'),
+(10, 1000001, 'Bazinga!!', 'Sunday 24th of October 2010 10:54:11 PM'),
+(11, 1000003, 'Lineage is my life', 'Sunday 24th of October 2010 11:11:57 PM'),
+(12, 1000000, 'BFBC2 has been updated', 'Saturday 30th of October 2010 06:21:52 PM');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`from`) REFERENCES `user_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `message_ibfk_4` FOREIGN KEY (`to`) REFERENCES `user_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wall`
+--
+ALTER TABLE `wall`
+  ADD CONSTRAINT `wall_ibfk_1` FOREIGN KEY (`poster`) REFERENCES `user_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

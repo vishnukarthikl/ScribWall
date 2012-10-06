@@ -1,0 +1,14 @@
+Backing Up and Restoring a MySQL Database
+To make a database backup using the MySQL command-line utilities, execute the following command:
+
+$ mysqldump -u username -p --opt dbname > dump.sql
+
+If the MySQL programs are not in your path, you will need to manually specify the location of the mysqldump program:
+
+$ /usr/local/mysql/bin/mysqldump -u username -p --opt dbname > dump.sql
+
+Download the dump.sql and keep it in a safe place (CDR, Zip disk, etc).
+
+If you need to restore your database, you can do so like this:
+
+$ mysql -u username -p --database=dbname < dump.sql
