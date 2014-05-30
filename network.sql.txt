@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS `user_details` (
 --
 
 INSERT INTO `user_details` (`id`, `user`, `first`, `last`, `pass`, `email`, `dob`, `address`, `phone`, `info`, `city`, `state`, `country`) VALUES
-(1000000, 'vishnu', 'vishnu', 'karthik', 'f970e2767d0cfe75876ea857f92e319b', 'vishnu_him@yahoo.co.in', '1991-01-23', '41,gopal nagar,peelamedu', '9894800857', 'Pro-Gamer', 'coimbatore', 'tamil nadu', 'india'),
 (1000001, 'karthik', 'karthik', 'dj', 'f970e2767d0cfe75876ea857f92e319b', 'karthik@gmail.com', '1991-01-21', '19,nehru nagar', '9894801331', 'Loves playing football', 'chennai', 'tamil nadu', 'india'),
 (1000002, 'ram', 'ram', 'rajesh', 'f970e2767d0cfe75876ea857f92e319b', 'ramrajesh@yahoo.com', '1990-12-14', 'hopes', '798989991', 'Student at Amrita School of Engineering', 'neyveli', 'tamil nadu', 'india'),
 (1000003, 'Jkayser', 'kyrion', 'leilan', 'f970e2767d0cfe75876ea857f92e319b', 'jkayser@aol.com', '1991-01-23', 'park avenue', '0112241241', 'Role playing game addict', 'madison square', 'berlin', 'germany'),
